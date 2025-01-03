@@ -104,9 +104,12 @@ http://localhost:3000/api-docs
 
 The API uses a centralized error handling mechanism with appropriate HTTP status codes and error messages.
 
+![screencapture-localhost-3000-api-docs-2025-01-03-12_58_40](https://github.com/user-attachments/assets/56d7ee4c-a2c5-4e3d-907f-ffe88d703209)
+
 ## Contributing
 
 1. Fork the repository
+
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
