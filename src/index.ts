@@ -88,6 +88,7 @@ import { errorHandler } from './middleware/error.middleware';
 import { logger } from './utils/logger';
 import { setupSwagger } from './swagger/swagger';
 import { userRouter } from './routes/user.routes';
+import { fileRouter } from './routes/file.routes';
 
 dotenv.config();
 
@@ -105,6 +106,7 @@ setupSwagger(app);
 // Routes
 app.use('/api/auth', authRouter); 
 app.use('/api/users', userRouter); 
+app.use('/api/files', fileRouter);
 
 // Error handling
 app.use(errorHandler);
