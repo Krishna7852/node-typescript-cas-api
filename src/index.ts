@@ -87,6 +87,7 @@ import { authRouter } from './routes/auth.routes';
 import { errorHandler } from './middleware/error.middleware';
 import { logger } from './utils/logger';
 import { setupSwagger } from './swagger/swagger';
+import { userRouter } from './routes/user.routes';
 
 dotenv.config();
 
@@ -102,7 +103,8 @@ app.use(morgan('combined'));
 setupSwagger(app);
 
 // Routes
-app.use('/api/auth', authRouter);
+app.use('/api/auth', authRouter); 
+app.use('/api/users', userRouter); 
 
 // Error handling
 app.use(errorHandler);

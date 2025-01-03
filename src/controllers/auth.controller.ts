@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
-import { User } from '../models/user.model';
+import { Auth } from '../models/auth.model';
 import { logger } from '../utils/logger';
 import { TokenService } from '../services/token.service';
 
@@ -9,7 +9,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     const { username, password, email } = req.body;
 
     // Check if user already exists
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    const existingUser = await Auth.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
@@ -18,7 +18,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create new user
-    const user = await User.create({
+    const user = await Auth.create({
       username,
       email,
       password: hashedPassword,
@@ -47,7 +47,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const { email, username, password } = req.body;
 
     // Find user by email or username
-    const user = await User.findOne({
+    const user = await Auth.findOne({
       $or: [
         { email },
         { username }
@@ -59,7 +59,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
 
     // Check password
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = bcrypt.compare(password, user.password as string);
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
@@ -95,7 +95,7 @@ export const getUserDetails = async (req: Request, res: Response, next: NextFunc
       return res.status(401).json({ message: 'User not authenticated' });
     }
     const userId = req.user.id;
-    const user = await User.findById(userId).select('-password');
+    const user = await Auth.findById(userId).select('-password');
     
     if (!user) {
       return res.status(404).json({ message: 'User not found' });

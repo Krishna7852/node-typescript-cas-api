@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { User } from '../models/user.model';
+import { Auth } from '../models/auth.model';
 import { TokenService } from '../services/token.service';
 import { UserRole } from '../models/roles';
 import { IUser } from '../models/user.interface';
@@ -35,7 +35,7 @@ export const authenticate = async (
     
     try {
       const decoded = await TokenService.verifyAccessToken(token);
-      const user = await User.findById(decoded.userId) as IUser;
+      const user = await Auth.findById(decoded.userId) as IUser;
       
       if (!user) {
         return res.status(401).json({ message: 'Invalid token' });

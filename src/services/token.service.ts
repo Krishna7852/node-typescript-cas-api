@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { Token } from '../models/token.model';
-import { IUser } from '../models/user.model';
+import { IUser } from '../models/auth.model';
 import { Types } from 'mongoose';
 import config from '../config/config';
 

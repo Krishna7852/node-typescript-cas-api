@@ -4,7 +4,7 @@ import { UserRole, RolePermissions, Permission } from '../models/roles';
 export const authorize = (requiredPermissions: Permission[]) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const userRole = req.user?.role as UserRole;
+            const userRole = req.body?.role as UserRole;
 
             if (!userRole) {
                 return res.status(403).json({ message: 'Forbidden: Role not found' });
