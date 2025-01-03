@@ -78,5 +78,5 @@ export const downloadFile = async (req: Request, res: Response) => {
     fileStream.pipe(res);
   } catch (err) {
     res.status(500).send('Error downloading file');
-  }
+  };
 };

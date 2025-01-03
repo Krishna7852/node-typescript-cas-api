@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "test": "jest"
+    "build": "npx gulp",
+    "test": "jest",
+    "serve": "http-server dist -o"
   },
   "dependencies": {
     "@types/joi": "^17.2.3",
@@ -17,6 +18,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "gulp": "^5.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.3",
@@ -35,6 +38,7 @@
     "@types/morgan": "^1.9.9",
     "@types/multer": "^1.4.12",
     "@types/node": "^20.10.5",
+    "http-server": "^14.1.1",
     "jest": "^29.7.0",
     "nodemon": "^3.0.2",
     "ts-jest": "^29.1.1",
