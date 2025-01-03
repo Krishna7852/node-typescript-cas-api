@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { UserRole } from '../models/roles';
 import { User } from '../models/user.model';
+import { Auth } from '../models/auth.model';
+
 
 export class UserController {
     // Get all users (Admin/Manager only)
@@ -131,8 +133,8 @@ export class UserController {
         try {
             if (!req.user) {
                 return res.status(401).json({ message: 'Unauthorized' });
-            }
-            const user = await User.findById(req.user.id).select('-password');
+            }            
+            const user = await Auth.findById(req.user.id);
             if (!user) {
                 return res.status(404).json({ message: 'User not found' });
             }
