@@ -83,11 +83,17 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 };
 
 export const validateToken = async (req: Request, res: Response) => {
+  if (!req.user) {
+    return res.status(401).json({ message: 'User not authenticated' });
+  }
   res.json({ message: 'Token is valid', user: req.user });
 };
 
 export const getUserDetails = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
     const userId = req.user.id;
     const user = await User.findById(userId).select('-password');
     

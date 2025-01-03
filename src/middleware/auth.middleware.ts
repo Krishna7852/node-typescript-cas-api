@@ -1,11 +1,20 @@
 import { Request, Response, NextFunction } from 'express';
 import { User } from '../models/user.model';
 import { TokenService } from '../services/token.service';
+import { UserRole } from '../models/roles';
+import { IUser } from '../models/user.interface';
+
+interface AuthenticatedUser {
+  id: string;
+  username: string;
+  email: string;
+  role: UserRole;
+}
 
 declare global {
   namespace Express {
     interface Request {
-      user?: any;
+      user?: AuthenticatedUser;
     }
   }
 }
@@ -26,7 +35,7 @@ export const authenticate = async (
     
     try {
       const decoded = await TokenService.verifyAccessToken(token);
-      const user = await User.findById(decoded.userId);
+      const user = await User.findById(decoded.userId) as IUser;
       
       if (!user) {
         return res.status(401).json({ message: 'Invalid token' });
@@ -35,7 +44,8 @@ export const authenticate = async (
       req.user = {
         id: user._id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        role: user.role as UserRole
       };
       
       next();

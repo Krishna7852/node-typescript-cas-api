@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Auth API Documentation
+  version: 1.0.0
+paths:
+  /api/auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                email:
+                  type: string
+      responses:
+        201:
+          description: User created successfully
+        400:
+          description: User already exists
+  /api/auth/login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Login successful
+        401:
+          description: Invalid credentials
+  /api/auth/validate-token:
+    get:
+      summary: Validate user token
+      responses:
+        200:
+          description: Token is valid
+        401:
+          description: User not authenticated
+  /api/auth/user-details:
+    get:
+      summary: Get user details
+      responses:
+        200:
+          description: User details retrieved successfully
+        401:
+          description: User not authenticated
+        404:
+          description: User not found
