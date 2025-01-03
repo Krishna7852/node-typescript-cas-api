@@ -73,13 +73,66 @@ http://localhost:3000/api-docs
 
 ## API Endpoints
 
-### Authentication
-- POST `/api/auth/register` - Register a new user
-- POST `/api/auth/login` - Login user
-- GET `/api/auth/validate-token` - Validate access token
+### Authentication Routes
 
-### User
-- GET `/api/auth/user` - Get user details
+#### POST /api/auth/login
+- **Description**: Logs in a user and returns a token.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+  ```
+
+#### POST /api/auth/register
+- **Description**: Registers a new user.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "password": "string",
+    "email": "string"
+  }
+  ```
+
+#### GET /api/auth/validate-token
+- **Description**: Validate access token
+
+### User Routes
+
+#### GET /api/auth/user
+- **Description**: Get user details
+
+#### GET /api/users
+- **Description**: Retrieves a list of users.
+
+#### GET /api/users/:id
+- **Description**: Retrieves a specific user by ID.
+
+#### PUT /api/users/:id
+- **Description**: Updates a user by ID.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "email": "string"
+  }
+  ```
+
+#### DELETE /api/users/:id
+- **Description**: Deletes a user by ID.
+
+### File Routes
+
+#### POST /api/files/upload
+- **Description**: Uploads a file.
+
+#### GET /api/files/:id
+- **Description**: Retrieves a file by ID.
+
+#### DELETE /api/files/:id
+- **Description**: Deletes a file by ID.
 
 ## Environment Variables
 
