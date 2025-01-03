@@ -24,4 +24,4 @@ gulp.task('watch', function () {
 });
 
 // Default task that runs when you execute 'gulp'
-gulp.task('default', gulp.series('scripts', 'watch')); // Run the 'scripts' and 'watch' tasks in series as the default task
+gulp.task('default', gulp.series('scripts')); // Run the 'scripts' and 'watch' tasks in series as the default task

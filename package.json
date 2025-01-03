@@ -6,13 +6,12 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "build": "npx gulp",
+    "build": "tsc",
     "test": "jest",
     "serve": "http-server dist -o"
   },
   "dependencies": {
     "@types/joi": "^17.2.3",
-    "@types/swagger-ui-express": "^4.1.7",
     "@types/yamljs": "^0.2.34",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -25,9 +24,7 @@
     "mongoose": "^8.9.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "swagger-ui-express": "^5.0.1",
-    "winston": "^3.11.0",
-    "yamljs": "^0.3.0"
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

@@ -86,7 +86,6 @@ import mongoose from 'mongoose';
 import { authRouter } from './routes/auth.routes';
 import { errorHandler } from './middleware/error.middleware';
 import { logger } from './utils/logger';
-import { setupSwagger } from './swagger/swagger';
 import { userRouter } from './routes/user.routes';
 import { fileRouter } from './routes/file.routes';
 
@@ -99,9 +98,6 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(morgan('combined'));
-
-// Setup Swagger documentation
-setupSwagger(app);
 
 // Routes
 app.use('/api/auth', authRouter); 
