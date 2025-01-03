@@ -1,4 +1,4 @@
-# Authentication Service with JWT
+# node-typescript-cas-api
 
 A TypeScript-based Authentication Service using JWT tokens with access and refresh token support.
 
@@ -23,8 +23,8 @@ A TypeScript-based Authentication Service using JWT tokens with access and refre
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/auths.git
-   cd auths
+   git clone https://github.com/Krishna7852/node-typescript-cas-api.git
+   cd node-typescript-cas-api
    ```
 
 2. Install dependencies:

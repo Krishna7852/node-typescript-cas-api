@@ -1,5 +1,5 @@
 {
-  "name": "cas-service",
+  "name": "node-typescript-cas-api",
   "version": "1.0.0",
   "description": "CAS Service with JWT Authentication",
   "main": "dist/index.js",
